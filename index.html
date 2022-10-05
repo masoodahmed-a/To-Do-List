@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+.para {
+        display: flex;
+        background-color: white;
+        align-items: center;
+        margin-bottom: 1.25rem;
+        justify-content: space-between;
+        padding: 0.5rem;
+        margin-left: 0.75rem;
+        border-radius: 0.375rem;
+        width: 18rem;
+        height: 3.5rem;
+      }
+      
+      .button {
+        margin-left: 0.75rem;
+      }
+      .btn_one {
+        color: rgb(29 78 216);
+        margin-right: 0.75rem;
+      }
+      .btn_two {
+        color: rgb(190 18 60);
+      }
+       .input{
+        width: 11rem;
+        padding: 0.25rem; 
+        outline: 2px solid transparent;
+outline-offset: 2px;
+
+        
+      }
+    </style>
+  </head>
+  <body class="bg-gray-400">
+    <div class="container min-h-screen m-auto p-10 flex flex-col items-center">
+      <h1 class="text-3xl pb-5 font-bold">To Do List</h1>
+      <input
+        type="text"
+        id="input-value"
+        class="border border-2 border-black rounded-md p-2"
+      />
+      <button class="bg-black text-white m-2 rounded-md w-20 mx-auto" id="add">
+        Add
+      </button>
+
+      <div class="content" id="list">
+<!-- <div
+          class="para flex bg-white items-center mb-5 justify-between p-2 space-x-3 rounded-md w-72 h-14"
+        >
+      <input
+        type="text"
+        id="input-value"
+        class="input w-44 p-1 outline-none"
+        value= 'Masood'
+      />
+          <div class="btn space-x-3">
+            <button class="btn_one text-blue-700">Edit</button>
+            <button class="btn_two text-rose-700">Del</button>
+          </div>
+        </div>
+
+
+      </div> -->
+    </div>
+    <script>
+      let input = document.getElementById("input-value");
+      let addBtn = document.getElementById("add");
+      let list = document.getElementById("list");
+
+      addBtn.addEventListener("click", function () {
+        if (!input.value) {
+          alert("Enter some text");
+        } else {
+          let div_one = document.createElement("div");
+          div_one.classList.add("para");
+          let para = document.createElement("input");
+          para.classList.add('input')
+para.setAttribute('onclick','blur()')
+
+para.setAttribute('readonly','readonly')
+
+          para.value = input.value;
+          let div_two = document.createElement("div");
+          div_two.classList.add("button");
+          let btn_one = document.createElement("button");
+          btn_one.classList.add("btn_one");
+          btn_one.innerText = "Edit";
+          let btn_two = document.createElement("button");
+          btn_two.classList.add("btn_two");
+          btn_two.innerText = "Del";
+
+          list.appendChild(div_one);
+          div_one.appendChild(para);
+          div_one.appendChild(div_two);
+          div_two.appendChild(btn_one);
+          div_two.appendChild(btn_two);
+
+          input.value = "";
+
+          btn_two.addEventListener("click", function () {
+            div_one.remove();
+            
+   
+          });
+btn_one.addEventListener('click',function(){
+if(btn_one.innerText == 'Edit'){
+para.removeAttribute('readonly');
+para.removeAttribute('onclick','blur()')
+btn_one.innerText = "Save";
+}else{
+para.setAttribute('readonly','readonly');
+para.setAttribute('onclick','blur()')
+btn_one.innerText = "Edit";
+}
+})
+          
+        }
+      });
+    </script>
+  </body>
+</html>
